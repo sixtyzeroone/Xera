@@ -1,0 +1,52 @@
+# ============================================================================
+# C2 Framework - Requirements
+# ============================================================================
+
+# GUI Framework
+PyQt5==5.15.9
+PyQtChart==5.15.6
+PyQt5-sip==12.11.0
+
+# Networking & Protocols
+requests==2.31.0
+dnspython==2.4.2
+pycryptodome==3.19.0
+pyOpenSSL==23.2.0
+cryptography==41.0.4
+
+# Windows Specific (Optional)
+pywin32==306
+impacket==0.11.0
+wmi==1.5.1
+pywinrm==0.4.3
+
+# SSH & Remote
+paramiko==3.3.1
+ssh2-python==1.0.0
+
+# SMB (Optional)
+pysmb==1.2.9
+
+# WireGuard (Optional)
+wireguard==0.1.1
+
+# Database
+sqlite3  # Built-in
+
+# Utilities
+psutil==5.9.6
+colorama==0.4.6
+tabulate==0.9.0
+tqdm==4.66.1
+
+# Web & API (Optional)
+Flask==3.0.0
+Werkzeug==3.0.0
+
+# Linux/Mac Specific
+python-iptables==1.0.1  # Linux only
+pyroute2==0.7.9         # Linux only
+
+# Additional
+python-magic==0.4.27
+pyinstaller==6.2.0     # For building executables

